@@ -3,16 +3,28 @@
     <a href="/" class="item active">
       Home
     </a>
-    <div class="right menu">
       <a class="ui item">
-        Logout
+        Poems about {{ getDay }}
       </a>
-    </div>
+      <a class="ui item">
+        Poems by ...
+      </a>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  data() {
+    return {
+      todayDay: new Date().getDay()
+    }
+  },
+  computed: {
+    getDay() {
+      const dayNumbers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      return dayNumbers[this.todayDay]
+    }
+  }
 }
 </script>
