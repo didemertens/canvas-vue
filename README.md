@@ -1,4 +1,4 @@
-# canvas-project
+# Poems project
 
 ## Project setup
 ```
