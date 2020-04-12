@@ -19,6 +19,7 @@ const actions = {
     commit('setLoading')
     axios.get(`http://poetrydb.org/title/${searchTerm}/.json`)
     .then(response => {
+      // console.log(response.data)
       commit('setPoems', response.data)
       commit('setLoading')
     })
