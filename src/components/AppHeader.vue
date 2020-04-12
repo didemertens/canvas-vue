@@ -7,24 +7,23 @@
         Poems about {{ getDay }}
       </a>
       <a class="ui item">
-        Poems by ...
+        Random poem
+      </a>
+      <a class="ui item">
+        My favourite poems
       </a>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   name: 'AppHeader',
-  data() {
-    return {
-      todayDay: new Date().getDay()
-    }
+  beforeMount() {
+    this.setDay()
   },
-  computed: {
-    getDay() {
-      const dayNumbers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-      return dayNumbers[this.todayDay]
-    }
-  }
+  methods: mapActions(['setDay']),
+  computed: mapGetters(['getDay'])
 }
 </script>
