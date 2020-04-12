@@ -1,6 +1,15 @@
 <template>
-  <div v-if="poems">
-    <PoemItem class="poem-container" v-for="poem in getSearchPoems" :poem="poem" :key="poem.title"></PoemItem>
+  <div>
+    <div v-if="poems.length > 0">
+      <PoemItem
+        class="poem-container"
+        v-for="poem in getSearchPoems"
+        :poem="poem"
+        :key="poem.title"
+        :style="poem.linecount > 50 ? {columnCount: 3} : {columnCount: 1}"
+      ></PoemItem>
+    </div>
+    <div v-else>Loading..</div>
   </div>
 </template>
 
@@ -28,8 +37,12 @@ export default {
 </script>
 
 <style scoped>
+div {
+  margin: 50px;
+}
 .poem-container {
-  column-count: 2;
+  background-color: #eee;
+  padding: 50px;
   column-gap: 0;
   margin-top: 80px;
 }
