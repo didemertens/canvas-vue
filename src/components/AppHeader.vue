@@ -1,11 +1,11 @@
 <template>
   <div class="ui tabular menu">
-    <a href="/" class="item active">
+    <router-link to="/" class="item active">
       Home
-    </a>
-      <a class="ui item">
+    </router-link>
+      <router-link to="/poemofday" class="ui item">
         Poems about {{ getDay }}
-      </a>
+      </router-link>
       <a class="ui item">
         Random poem
       </a>

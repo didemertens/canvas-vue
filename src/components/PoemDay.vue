@@ -1,7 +1,6 @@
 <template>
   <div v-if="poems">
-    <h1>Poems about {{ getDay }}</h1>
-    <PoemItem v-for="poem in getSearchPoems" :poem="poem" :key="poem.title"></PoemItem>
+    <PoemItem class="poem-container" v-for="poem in getSearchPoems" :poem="poem" :key="poem.title"></PoemItem>
   </div>
 </template>
 
@@ -27,3 +26,11 @@ export default {
   computed: mapGetters(["getDay", "getSearchPoems"])
 };
 </script>
+
+<style scoped>
+.poem-container {
+  column-count: 2;
+  column-gap: 0;
+  margin-top: 80px;
+}
+</style>
