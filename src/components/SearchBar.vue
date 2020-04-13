@@ -11,20 +11,8 @@
       </div>
     </div>
 
-    <form class="ui form">
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" class="hidden" checked="" name="radioGroup" readonly="" tabindex="0" value="title" />
-          <label>Title</label>
-        </div>
-      </div>
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" class="hidden" name="radioGroup" readonly="" tabindex="0" value="author" />
-          <label>Author</label>
-        </div>
-      </div>
-    </form>
+    <dropdown :options="searchOptions" :selected="defaultSearchFilter" v-on:updateOption="filterSearch"></dropdown>
+
     
     <PoemItem
         class="poem-container"
@@ -39,18 +27,26 @@
 <script>
 import PoemItem from "./PoemItem";
 import { mapActions, mapGetters } from "vuex";
+import dropdown from 'vue-dropdowns';
 
 export default {
   name: 'SearchBar',
-  components: { PoemItem },
+  components: { PoemItem, dropdown },
   data() {
     return {
       poems: [],
       searchTerm: null,
-      searchFilter: 'title'
+      searchFilter: 'title',
+      searchOptions: [{name: 'Title'}, {name: 'Author'}],
+      defaultSearchFilter: {
+        name: 'Title'
+      }
     }
   },
   methods: {
+    filterSearch(payload) {
+      this.searchFilter = payload.name.toLowerCase();
+    },
     searchPoems() {
       if (this.searchTerm) {
         this.loadPoems({ search: this.searchTerm, filter: this.searchFilter})
@@ -93,8 +89,7 @@ h1 {
   background-color: #eee;
   padding: 50px;
   column-gap: 0;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  margin: 80px 50px;
 }
 .ui.animated.button {
   background-color: #eb8034;
