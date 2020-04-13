@@ -3,7 +3,6 @@
     <h1>Search for a poem</h1>
     <div class="ui input">
       <input
-        v-on:keyup.enter="searchPoems"
         @input="getInput"
         type="text"
         placeholder="Type here..."
@@ -20,13 +19,18 @@
       :selected="defaultSearchFilter"
       v-on:updateOption="filterSearch"
     ></dropdown>
-    <PoemItem
-      class="poem-container"
-      v-for="poem in getSearchPoems"
-      :poem="poem"
-      :key="poem.title"
-      :style="poem.linecount > 50 ? {columnCount: 3} : {columnCount: 1}"
-    ></PoemItem>
+    <div v-if="getSearchPoems.length > 0 && searching">
+      <PoemItem
+        class="poem-container"
+        v-for="poem in getSearchPoems"
+        :poem="poem"
+        :key="poem.title"
+        :style="poem.linecount > 50 ? {columnCount: 3} : {columnCount: 1}"
+      ></PoemItem>
+    </div>
+    <div v-else-if="searching">
+      <h2>No results</h2>
+    </div>
   </div>
 </template>
 
@@ -49,12 +53,17 @@ export default {
       }
     };
   },
+  created() {
+    this.poems = [],
+    this.searching = false
+  },
   methods: {
     filterSearch(payload) {
       this.searchFilter = payload.name.toLowerCase();
     },
     searchPoems() {
       if (this.searchTerm) {
+        this.searching = true
         this.loadPoems({ search: this.searchTerm, filter: this.searchFilter });
         this.poems = this.getSearchPoems;
       }
@@ -100,5 +109,8 @@ h1 {
 .ui.animated.button {
   background-color: #eb8034;
   color: white;
+}
+h2 {
+  margin-top: 10vh;
 }
 </style>

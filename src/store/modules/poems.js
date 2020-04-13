@@ -11,9 +11,7 @@ const getters = {
   getLoading: (state) => state.loading,
   getDay: (state) => state.currentDay,
   getSearchPoems: (state) => state.searchedPoems,
-  getSavedPoems: (state) => {
-    console.log(state.savedPoems)
-    return state.savedPoems}
+  getSavedPoems: (state) => state.savedPoems
 }
 
 const actions = {
