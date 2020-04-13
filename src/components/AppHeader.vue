@@ -3,12 +3,12 @@
     <router-link to="/" class="item" :class="{ active: isHomeActive }" @click.native="switchTabs('home')">
       Home
     </router-link>
-      <router-link to="/poemofday" class="ui item" :class="{ active: isDayActive }" @click.native="switchTabs('day')">
+      <router-link to="/poemsoftheday" class="ui item" :class="{ active: isDayActive }" @click.native="switchTabs('day')">
         Poems about {{ getDay }}
       </router-link>
-      <a class="ui item">
+      <router-link to="/randompoem" class="ui item" :class="{ active: isRandomActive }" @click.native="switchTabs('random')">
         Random poem
-      </a>
+      </router-link>
       <a class="ui item">
         Your favourites
       </a>
@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       isHomeActive: true,
-      isDayActive: false
+      isDayActive: false,
+      isRandomActive: false
     }
   },
   beforeMount() {
@@ -35,9 +36,15 @@ export default {
       if (tab === 'home') {
         this.isHomeActive = true;
         this.isDayActive = false;
-      } else {
+        this.isRandomActive = false;
+      } else if (tab==='day') {
         this.isHomeActive = false;
         this.isDayActive = true;
+        this.isRandomActive = false;
+      }else if (tab==='random') {
+        this.isHomeActive = false;
+        this.isDayActive = false;
+        this.isRandomActive = true;
       }
     } 
   },

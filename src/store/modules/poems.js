@@ -22,6 +22,13 @@ const actions = {
       commit('setLoading')
     })
   },
+  loadRandomPoem: ({ commit }, payload) => {
+    axios.get(`http://poetrydb.org/${payload.filter}/${payload.search}/.json`)
+    .then(response => {
+      commit('setPoems', response.data[Math.floor(Math.random() * response.data.length)])
+      commit('setLoading')
+    })
+  },
   setDay: ({ commit }) => {
     commit('setDay')
   },
