@@ -15,6 +15,9 @@ const getters = {
 }
 
 const actions = {
+  changeLoading: ({ commit }) => {
+    commit('setLoading')
+  },
   loadPoems: ({ commit }, payload) => {
     axios.get(`http://poetrydb.org/${payload.filter}/${payload.search}/.json`)
     .then(response => {
@@ -25,8 +28,17 @@ const actions = {
   loadRandomPoem: ({ commit }, payload) => {
     axios.get(`http://poetrydb.org/${payload.filter}/${payload.search}/.json`)
     .then(response => {
-      commit('setPoems', response.data[Math.floor(Math.random() * response.data.length)])
-      commit('setLoading')
+      const poem = response.data[Math.floor(Math.random() * response.data.length)]
+      if (poem) {
+        commit('setPoems', poem)
+        commit('setLoading')
+      }
+      else {
+        commit('setPoems', {
+          title: 'Not found. Try again!'
+        })
+        commit('setLoading')
+      }
     })
   },
   setDay: ({ commit }) => {

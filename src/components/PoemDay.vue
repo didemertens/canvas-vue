@@ -46,7 +46,7 @@ div {
 .poem-container {
   background-color: #eee;
   padding: 50px;
-  column-gap: 0;
+  column-gap: 2;
   margin-top: 80px;
 }
 </style>
