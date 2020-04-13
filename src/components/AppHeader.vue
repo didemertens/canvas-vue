@@ -9,9 +9,9 @@
       <router-link to="/randompoem" class="ui item" :class="{ active: isRandomActive }" @click.native="switchTabs('random')">
         Random poem
       </router-link>
-      <a class="ui item">
+      <router-link to="/favourites" class="ui item" :class="{ active: isFavouritesActive }" @click.native="switchTabs('favourites')">
         Your favourites
-      </a>
+      </router-link>
   </div>
 </template>
 
@@ -24,7 +24,8 @@ export default {
     return {
       isHomeActive: true,
       isDayActive: false,
-      isRandomActive: false
+      isRandomActive: false,
+      isFavouritesActive: false
     }
   },
   beforeMount() {
@@ -37,17 +38,25 @@ export default {
         this.isHomeActive = true;
         this.isDayActive = false;
         this.isRandomActive = false;
+        this.isFavouritesActive = false;
       } else if (tab==='day') {
         this.isHomeActive = false;
         this.isDayActive = true;
         this.isRandomActive = false;
-      }else if (tab==='random') {
+        this.isFavouritesActive = false;
+      } else if (tab==='random') {
         this.isHomeActive = false;
         this.isDayActive = false;
         this.isRandomActive = true;
+        this.isFavouritesActive = false;
+      } else {
+        this.isHomeActive = false;
+        this.isDayActive = false;
+        this.isRandomActive = false;
+        this.isFavouritesActive = true;
       }
     } 
   },
-  computed: mapGetters(['getDay'])
+  computed: mapGetters(['getDay', 'getSavedPoems'])
 }
 </script>

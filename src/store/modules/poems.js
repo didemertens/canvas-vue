@@ -4,7 +4,7 @@ const state = {
   loading: true,
   searchedPoems: [],
   currentDay: null,
-  savedPoems: []
+  savedPoems: JSON.parse(localStorage.getItem('savedPoems'))
 }
 
 const getters = {
@@ -62,7 +62,14 @@ const mutations = {
     state.currentDay = dayNumbers[todayDate]
   },
   savePoem: (state, poem) => {
-    state.savedPoems.push(poem)
+    const localPoems = localStorage.getItem('savedPoems')
+    if (localPoems) {
+      const updateLocalPoems = JSON.parse(localPoems)
+      updateLocalPoems.push(poem)
+      localStorage.setItem('savedPoems', JSON.stringify(updateLocalPoems))
+    } else {
+      localStorage.setItem('savedPoems', JSON.stringify([poem]))
+    }
   }
 }
 

@@ -6,6 +6,7 @@ import store from './store'
 import SearchBar from "./components/SearchBar"
 import PoemDay from './components/PoemDay'
 import RandomPoem from './components/RandomPoem'
+import SavedPoems from './components/SavedPoems'
 
 Vue.use(VueRouter)
 
@@ -14,7 +15,8 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: SearchBar },
     { path: '/poemsoftheday', component: PoemDay },
-    { path: '/randompoem', component: RandomPoem }
+    { path: '/randompoem', component: RandomPoem },
+    { path: '/favourites', component: SavedPoems }
   ]
 })
 
