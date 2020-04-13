@@ -1,12 +1,14 @@
 import axios from 'axios'
 
 const state = {
+  loading: true,
   searchedPoems: [],
   currentDay: null,
   savedPoems: []
 }
 
 const getters = {
+  getLoading: (state) => state.loading,
   getDay: (state) => state.currentDay,
   getSearchPoems: (state) => state.searchedPoems,
   getSavedPoems: (state) => state.savedPoems
@@ -16,8 +18,8 @@ const actions = {
   loadPoems: ({ commit }, searchTerm) => {
     axios.get(`http://poetrydb.org/lines/${searchTerm}/.json`)
     .then(response => {
-      console.log(response.data)
       commit('setPoems', response.data)
+      commit('setLoading')
     })
   },
   setDay: ({ commit }) => {
@@ -29,6 +31,9 @@ const actions = {
 }
 
 const mutations = {
+  setLoading: (state) => {
+    state.loading = !state.loading
+  },
   setPoems: (state, poems) => {
     state.searchedPoems = poems
   },

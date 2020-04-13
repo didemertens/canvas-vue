@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="poems.length > 0">
+    <div v-if="!getLoading">
       <PoemItem
         class="poem-container"
         v-for="poem in getSearchPoems"
@@ -9,7 +9,7 @@
         :style="poem.linecount > 50 ? {columnCount: 3} : {columnCount: 1}"
       ></PoemItem>
     </div>
-    <div v-else>Loading..</div>
+    <div v-else class="ui active centered inline loader"></div>
   </div>
 </template>
 
@@ -24,15 +24,17 @@ export default {
   },
   data() {
     return {
-      poems: []
+      poems: [],
+      loading: true
     };
   },
-  beforeMount() {
-    this.loadPoems(this.getDay);
-    this.poems = this.getSearchPoems;
+  created() {
+    this.loadPoems(this.getDay)
+    this.poems = this.getSearchPoems
+    this.loading = this.getLoading
   },
   methods: mapActions(["loadPoems"]),
-  computed: mapGetters(["getDay", "getSearchPoems"])
+  computed: mapGetters(["getDay", "getSearchPoems", "getLoading"])
 };
 </script>
 
