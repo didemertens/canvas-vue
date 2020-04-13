@@ -18,6 +18,7 @@ export default {
   methods: {
     clickPoem() {
       this.savePoem(this.poem)
+      this.$toasted.show('Poem saved!', { position: 'top-center', duration: 1000, type: 'success'})
     },
     ...mapActions(['savePoem'])
   }

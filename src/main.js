@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Toasted, { Options } from 'vue-toasted';
 
 import App from './App'
 import store from './store'
@@ -9,6 +10,7 @@ import RandomPoem from './components/RandomPoem'
 import SavedPoems from './components/SavedPoems'
 
 Vue.use(VueRouter)
+Vue.use(Toasted, Options)
 
 const router = new VueRouter({
   mode: 'history',
