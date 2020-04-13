@@ -3,7 +3,7 @@
     Saved poems
     <PoemItem
         class="poem-container"
-        v-for="poem in getSavedPoems"
+        v-for="poem in poems"
         :poem="poem"
         :key="poem.title"
         :style="poem.linecount > 50 ? {columnCount: 3} : {columnCount: 1}"
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import PoemItem from "./PoemItem";
 
 export default {
@@ -20,10 +19,12 @@ export default {
   components: { PoemItem },
   data() {
     return {
-      savedPoems: []
+      poems: []
     }
   },
-  computed: mapGetters(['getSavedPoems'])
+  beforeMount() {
+    this.poems = JSON.parse(localStorage.getItem('savedPoems'))
+  }
 }
 </script>
 

@@ -11,7 +11,9 @@ const getters = {
   getLoading: (state) => state.loading,
   getDay: (state) => state.currentDay,
   getSearchPoems: (state) => state.searchedPoems,
-  getSavedPoems: (state) => state.savedPoems
+  getSavedPoems: (state) => {
+    console.log(state.savedPoems)
+    return state.savedPoems}
 }
 
 const actions = {
@@ -46,6 +48,9 @@ const actions = {
   },
   savePoem: ({ commit }, poem) => {
     commit('savePoem', poem)
+  },
+  updateLocalStorage: () => {
+    return localStorage.getItem('savedPoems')
   }
 }
 
