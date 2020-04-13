@@ -10,7 +10,7 @@
         Random poem
       </a>
       <a class="ui item">
-        My favourite poems
+        Your favourites
       </a>
   </div>
 </template>

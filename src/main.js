@@ -11,7 +11,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/search', component: SearchBar },
+    { path: '/', component: SearchBar },
     { path: '/poemofday', component: PoemDay }
   ]
 })

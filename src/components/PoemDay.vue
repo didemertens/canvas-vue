@@ -24,12 +24,13 @@ export default {
   },
   data() {
     return {
+      searchFilter: 'lines',
       poems: [],
       loading: true
     };
   },
   created() {
-    this.loadPoems(this.getDay)
+    this.loadPoems({search: this.getDay, filter: this.searchFilter})
     this.poems = this.getSearchPoems
     this.loading = this.getLoading
   },

@@ -15,8 +15,8 @@ const getters = {
 }
 
 const actions = {
-  loadPoems: ({ commit }, searchTerm) => {
-    axios.get(`http://poetrydb.org/lines/${searchTerm}/.json`)
+  loadPoems: ({ commit }, payload) => {
+    axios.get(`http://poetrydb.org/${payload.filter}/${payload.search}/.json`)
     .then(response => {
       commit('setPoems', response.data)
       commit('setLoading')
