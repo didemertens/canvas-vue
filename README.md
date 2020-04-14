@@ -1,5 +1,5 @@
 # Poems project
-This is a website on which poems can be found with keywords in the title, author and lines. It also shows poems about the current day (e.g. Tuesday), a poem about a random word. Users can also store their favourite poems.
+This is a website on which poems can be found with keywords in the title, author and lines. It also shows poems about the current day (e.g. Tuesday) and a poem about a random word. It's also possible to store your favourite poems by clicking on the heart icon.
 
 <img src="src/assets/home-scr.png" alt="Home page" height="250"/> 
 
