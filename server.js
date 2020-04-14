@@ -20,4 +20,4 @@ app.get('/poems/:search/:filter', async (req, res) => {
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/dist/index.html`))
 
 const port = process.env.PORT || 5000
-app.listen(process.env.PORT, () => console.log(`Running on port ${process.env.PORT}`))
+app.listen(5000, () => console.log('Static server on port 5000'))
