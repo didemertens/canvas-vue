@@ -19,5 +19,4 @@ app.get('/poems/:search/:filter', async (req, res) => {
 // getPoems()
 
 const port = process.env.PORT || 5000
-app.listen(port)
-console.log('server started '+ port)
+app.listen(process.env.PORT, () => console.log(`Running on port ${process.env.PORT}`))
