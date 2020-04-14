@@ -60,9 +60,9 @@ const mutations = {
     state.searchedPoems = poems
   },
   setDay: () =>  {
-    const todayDate = new Date().getDay()
-    const dayNumbers = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    state.currentDay = dayNumbers[todayDate]
+    const todayNumber = new Date().getDay()
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    state.currentDay = daysOfWeek[todayNumber]
   },
   savePoem: (state, poem) => {
     const localPoems = localStorage.getItem('savedPoems')
