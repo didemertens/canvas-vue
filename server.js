@@ -6,6 +6,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(cors())
+app.use(express.static(`${__dirname}/dist`))
 
 app.get('/poems/:search/:filter', async (req, res) => {
   try {
@@ -16,7 +17,7 @@ app.get('/poems/:search/:filter', async (req, res) => {
   }
 })
 
-// getPoems()
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/dist/index.html`))
 
 const port = process.env.PORT || 5000
 app.listen(process.env.PORT, () => console.log(`Running on port ${process.env.PORT}`))
