@@ -1,4 +1,4 @@
-import axios from 'axios'
+import PoemService from '../../services/PoemService'
 
 const state = {
   loading: true,
@@ -19,16 +19,16 @@ const actions = {
     commit('setLoading')
   },
   loadPoems: ({ commit }, payload) => {
-    axios.get(`http://poetrydb.org/${payload.filter}/${payload.search}/.json`)
+    PoemService.getPoems({search: payload.search, filter: payload.filter })
     .then(response => {
-      commit('setPoems', response.data)
+      commit('setPoems', response)
       commit('setLoading')
     })
   },
   loadRandomPoem: ({ commit }, payload) => {
-    axios.get(`http://poetrydb.org/${payload.filter}/${payload.search}/.json`)
+    PoemService.getPoems({search: payload.search, filter: payload.filter })
     .then(response => {
-      const poem = response.data[Math.floor(Math.random() * response.data.length)]
+      const poem = response[Math.floor(Math.random() * response.length)]
       if (poem) {
         commit('setPoems', poem)
         commit('setLoading')
