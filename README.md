@@ -4,7 +4,7 @@ This is a website on which poems can be found with keywords in the title, author
 <img src="src/assets/home-scr.png" alt="Home page" height="500"/> 
 
 # Built with
-* Vue
+* Vue.js
 * Vuex
 * Vue Router
 * Semantic UI
@@ -14,7 +14,7 @@ This is a website on which poems can be found with keywords in the title, author
 Download the repo and run `yarn install` and then `yarn serve`. The website can be found on localhost:8080.
 
 # Wins and challenges
-* It was great to work with Vue for the first time. I like how every component is structured with the template, script and style tags. It was tricky to work with Vuex in the beginning, but because I have some experience with Redux it was easier to learn and eventually I liked using the actions, mutations and getters.
+* It was great to work with Vue.js for the first time. I like how every component is structured with the template, script and style tags. It was tricky to work with Vuex in the beginning, but because I have some experience with Redux it was easier to learn and eventually I liked using the actions, mutations and getters.
 * One of the things I struggled with was showing the poems in an easy to read way. Especially the really long poems were hard to style. After some Googling, I found the solution. I included a ternary statement for the styling of the poem. The amount of columns now depends on the length of the poem:
 
 ```javascript
